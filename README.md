@@ -15,12 +15,4 @@ PDF LLM is a Python application that leverages a language model to process and a
 - Python 3.x
 - Required libraries (e.g., `PyPDF2`, `transformers`, etc.)
 
-## Installation
 
-1. Clone the repository:
- ```bash
-   git clone https://github.com/Arashomranpour/pdf_llm.git
-2. Run the python file:
- ```bash
-    python app(2).py 
-   
