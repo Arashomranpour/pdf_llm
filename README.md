@@ -42,7 +42,7 @@ cd pdf_llm
 pip install streamlit PyPDF2 langchain langchain-google-genai google-generativeai faiss-cpu
 ```
 
-The script `app (2).py` currently contains the API key inline. Replace it with your own key (preferably read it from an environment variable such as `GOOGLE_API_KEY`) before running:
+Export your key as `GOOGLE_API_KEY` before running:
 
 ```bash
 streamlit run "app (2).py"

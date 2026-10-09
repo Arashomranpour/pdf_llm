@@ -10,7 +10,7 @@ from langchain.prompts import PromptTemplate, prompt
 import os
 
 
-genai.configure(api_key="AIzaSyDaFygGK9ocbwn1JRNKrB5_4H59dXmd8Dg")
+genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 def get_text(pdf_doc):
   text=""
@@ -27,7 +27,7 @@ def get_chunks(text):
   return chunks
 
 def get_vect(chunk):
-  embd=GoogleGenerativeAIEmbeddings(model="models/embedding-001",google_api_key="AIzaSyDaFygGK9ocbwn1JRNKrB5_4H59dXmd8Dg")
+  embd=GoogleGenerativeAIEmbeddings(model="models/embedding-001",google_api_key=os.getenv("GOOGLE_API_KEY"))
   vect=FAISS.from_texts(chunk,embd)
   vect.save_local("faiss_index")
 
@@ -48,7 +48,7 @@ def get_conv():
   return chain
 
 def user_input(user_question):
-  emb=GoogleGenerativeAIEmbeddings(model="models/embedding-001",google_api_key="AIzaSyDaFygGK9ocbwn1JRNKrB5_4H59dXmd8Dg")
+  emb=GoogleGenerativeAIEmbeddings(model="models/embedding-001",google_api_key=os.getenv("GOOGLE_API_KEY"))
   new_db=FAISS.load_local("faiss_index",emb,allow_dangerous_deserialization=True)
   docs=new_db.similarity_search(user_question)
   chain=get_conv()
